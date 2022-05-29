@@ -1,5 +1,3 @@
-from pickle import TRUE
-from subprocess import list2cmdline
 from SearchAlgorithm import SearchAlgorithm
 
 class LinearSearch(SearchAlgorithm):
