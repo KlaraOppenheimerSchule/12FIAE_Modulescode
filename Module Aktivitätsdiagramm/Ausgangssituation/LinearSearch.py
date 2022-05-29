@@ -9,7 +9,8 @@ class LinearSearch(SearchAlgorithm):
         for i in list:
             iterations=iterations+1
             if(i==searchValue):
-                print("Found value, in Iteration:", iterations)
-                return True
+                print("Found value. At listposition: ", iterations ,".In iteration:", iterations)
+                return iterations
+            
         print("Value not found")
         return iterations
