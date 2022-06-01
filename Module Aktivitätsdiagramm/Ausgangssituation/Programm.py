@@ -1,6 +1,7 @@
 from random import randint
 from BubbleSort import BubbleSort
-from BinarySearch import BinarySearch
+from BinarySearchIterative import BinarySearchIterative
+from BinarySearchRecursivly import BinarySearchRecursivly
 from LinearSearch import LinearSearch
 
 class Programm:
@@ -24,32 +25,50 @@ class Programm:
              self.__searchStrategy.resetIterationCounter()
 
 
-#Variante Lineare Suche
+#Run lineare search
 searchAlgorithm = LinearSearch()
 sortAlgorithm = None
 programm = Programm(searchAlgorithm, sortAlgorithm)
-
 sumOfIterations=0
 
-for i in range(100):
+for i in range(1000):
     list=[randint(0,100) for i in range(60)]
     searchValue=42
     iteration=programm.runSearch(list, searchValue)
     sumOfIterations=sumOfIterations+ iteration
 
-avgIteration=sumOfIterations/100
-print("Durchschnittliche Anzahl der Iterationen: ", avgIteration )
+avgIteration=sumOfIterations/1000
+print("Average number of iterations - linear serch: ", avgIteration )
 
 
-#Variante BinarySearch+Bubblesort
+#Run binary search iterative
 print("------------------")
-searchAlgorithm = BinarySearch()
+searchAlgorithm = BinarySearchIterative()
 sortAlgorithm = BubbleSort()
 
 programm.setSearchAlgorithm(searchAlgorithm)
 programm.setSortAlgorithm(sortAlgorithm)
 sumOfIterations=0
-for i in range(100):
+for i in range(1000):
+    list=[randint(0,100) for i in range(60)]
+    searchValue=42
+    programm.runSort(list)
+    iteration=programm.runSearch(list, searchValue)
+    sumOfIterations=sumOfIterations+ iteration
+
+avgIteration=sumOfIterations/1000
+print("Average number of iterations - binary search iterative:", avgIteration)
+
+
+#Run binary search recursively
+print("------------------")
+searchAlgorithm = BinarySearchRecursivly()
+sortAlgorithm = BubbleSort()
+
+programm.setSearchAlgorithm(searchAlgorithm)
+programm.setSortAlgorithm(sortAlgorithm)
+sumOfIterations=0
+for i in range(1000):
     programm.resetConter()
     list=[randint(0,100) for i in range(60)]
     searchValue=42
@@ -57,5 +76,5 @@ for i in range(100):
     iteration=programm.runSearch(list, searchValue)
     sumOfIterations=sumOfIterations+ iteration
 
-avgIteration=sumOfIterations/100
-print("Durchschnittliche Anzahl der Iterationen: ", avgIteration)
+avgIteration=sumOfIterations/1000
+print("Average number of iterations - binary search recursivly:", avgIteration)

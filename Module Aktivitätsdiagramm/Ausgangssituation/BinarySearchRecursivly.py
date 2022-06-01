@@ -1,31 +1,30 @@
 from SearchAlgorithm import SearchAlgorithm
           
-class BinarySearch(SearchAlgorithm):
+class BinarySearchRecursivly(SearchAlgorithm):
 
-#TODO ITERATIV ABÄNDERN https://www.inf.hs-flensburg.de/lang/algorithmen/elementar/binaere-suche.htm
     def __init__(self):
         self.__iteartions=0
 
     def resetIterationCounter(self):
         self.__iteartions=0
 
-    def runAlgorithm(self, s, x):
+    def runAlgorithm(self, list, searchedValue):
         self.__iteartions=self.__iteartions+1
         #print("Iteration: ", self.__iteartions)
         #print(s)
-        if len(s)==1:
-            if s[0]==x:
-                print("SearchValue found in iteration: ", self.__iteartions)
+        if len(list)==1:
+            if list[0]==searchedValue:
+                #print("SearchValue found in iteration: ", self.__iteartions)
                 return self.__iteartions           
             else:
-                print("SearchValue not found")
+                #print("SearchValue not found")
                 return self.__iteartions   
         
         else:
-            m=s[len(s)//2]
-            if x >=m:
+            m=list[len(list)//2]
+            if searchedValue >=m:
                 #TODO: Link zur Rekursionserklärung anfügen
-                return self.runAlgorithm(s[len(s)//2:],x)
+                return self.runAlgorithm(list[len(list)//2:],searchedValue)
             else:
-                return self.runAlgorithm(s[:len(s)//2],x)
+                return self.runAlgorithm(list[:len(list)//2],searchedValue)
                 
