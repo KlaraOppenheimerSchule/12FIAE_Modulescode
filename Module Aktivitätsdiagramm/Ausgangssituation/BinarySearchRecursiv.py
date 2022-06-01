@@ -2,7 +2,6 @@ from SearchAlgorithm import SearchAlgorithm
           
 class BinarySearch(SearchAlgorithm):
 
-#TODO ITERATIV ABÄNDERN https://www.inf.hs-flensburg.de/lang/algorithmen/elementar/binaere-suche.htm
     def __init__(self):
         self.__iteartions=0
 

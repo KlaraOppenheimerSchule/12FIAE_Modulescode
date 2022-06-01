@@ -26,8 +26,9 @@ class Programm:
 
 #Variante Lineare Suche
 searchAlgorithm = LinearSearch()
-sortAlgorithm = 0
+sortAlgorithm = None
 programm = Programm(searchAlgorithm, sortAlgorithm)
+
 sumOfIterations=0
 
 for i in range(100):
@@ -57,8 +58,4 @@ for i in range(100):
     sumOfIterations=sumOfIterations+ iteration
 
 avgIteration=sumOfIterations/100
-print("Durchschnittliche Anzahl der Iterationen: ", avgIteration )
-
-
-#TODO:
-#O Zeitmessung integrieren
+print("Durchschnittliche Anzahl der Iterationen: ", avgIteration)
