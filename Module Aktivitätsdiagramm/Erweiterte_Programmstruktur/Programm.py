@@ -25,7 +25,8 @@ class Programm:
         return self.__sortStrategy.runAlgorithm(list)
 
     def runSearch(self):
-       return self.__searchStrategy.runAlgorithm(self.__list, self.__searchValue)
+        self.createList()
+        return self.__searchStrategy.runAlgorithm(self.__list, self.__searchValue)
 
     def resetConter(self):
              self.__searchStrategy.resetIterationCounter()

@@ -14,6 +14,7 @@ class Programm:
         self.__list.sort()
 
     def setSearchAlgorithm(self, searchAlgorithm):
+        self.createList()
         self.__searchStrategy=searchAlgorithm
 
     def runSearch(self):
