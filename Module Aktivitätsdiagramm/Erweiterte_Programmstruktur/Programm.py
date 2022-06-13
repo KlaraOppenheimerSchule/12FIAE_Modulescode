@@ -5,10 +5,16 @@ from BinarySearchRecursivly import BinarySearchRecursivly
 from LinearSearch import LinearSearch
 
 class Programm:
-    def __init__(self, SearchAlgorithm, SortAlgorithm):
+    def __init__(self, SearchAlgorithm, SortAlgorithm, searchValue):
         self.__searchStrategy = SearchAlgorithm
         self.__sortStrategy = SortAlgorithm
+        self.__searchValue=searchValue
+        self.createList()
 
+    def createList(self):
+        self.__list=[randint(0,100) for i in range(60)]
+        self.__list.sort()
+    
     def setSearchAlgorithm(self, searchAlgorithm):
         self.__searchStrategy=searchAlgorithm
 
@@ -18,8 +24,8 @@ class Programm:
     def runSort(self, list):
         return self.__sortStrategy.runAlgorithm(list)
 
-    def runSearch(self, list, searchValue):
-        return self.__searchStrategy.runAlgorithm(list, searchValue)
+    def runSearch(self):
+       return self.__searchStrategy.runAlgorithm(self.__list, self.__searchValue)
 
     def resetConter(self):
              self.__searchStrategy.resetIterationCounter()
@@ -28,13 +34,11 @@ class Programm:
 #Run lineare search
 searchAlgorithm = LinearSearch()
 sortAlgorithm = None
-programm = Programm(searchAlgorithm, sortAlgorithm)
+programm = Programm(searchAlgorithm, sortAlgorithm, 42)
 sumOfIterations=0
 
 for i in range(1000):
-    list=[randint(0,100) for i in range(60)]
-    searchValue=42
-    iteration=programm.runSearch(list, searchValue)
+    iteration=programm.runSearch()
     sumOfIterations=sumOfIterations+ iteration
 
 avgIteration=sumOfIterations/1000
@@ -50,10 +54,7 @@ programm.setSearchAlgorithm(searchAlgorithm)
 programm.setSortAlgorithm(sortAlgorithm)
 sumOfIterations=0
 for i in range(1000):
-    list=[randint(0,100) for i in range(60)]
-    searchValue=42
-    programm.runSort(list)
-    iteration=programm.runSearch(list, searchValue)
+    iteration=programm.runSearch()
     sumOfIterations=sumOfIterations+ iteration
 
 avgIteration=sumOfIterations/1000
@@ -70,10 +71,7 @@ programm.setSortAlgorithm(sortAlgorithm)
 sumOfIterations=0
 for i in range(1000):
     programm.resetConter()
-    list=[randint(0,100) for i in range(60)]
-    searchValue=42
-    programm.runSort(list)
-    iteration=programm.runSearch(list, searchValue)
+    iteration=programm.runSearch()
     sumOfIterations=sumOfIterations+ iteration
 
 avgIteration=sumOfIterations/1000

@@ -26,7 +26,7 @@ class BinarySearchIterative(SearchAlgorithm):
                 return mid
  
         # If we reach here, then the element was not present
-        print("SearchValue not found")
+        #print("SearchValue not found")
         return iterations   
  
                 

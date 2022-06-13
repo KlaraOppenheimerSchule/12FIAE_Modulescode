@@ -7,7 +7,7 @@ class LinearSearch(SearchAlgorithm):
 
         for i in list:
             if(i==searchValue):
-                print("Found value. At listposition: ", iterations ,".In iteration:", iterations)
+                #print("Found value. At listposition: ", iterations ,".In iteration:", iterations)
                 return iterations
                 
             iterations=iterations+1

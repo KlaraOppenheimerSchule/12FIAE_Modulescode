@@ -23,7 +23,6 @@ class BinarySearchRecursivly(SearchAlgorithm):
         else:
             m=list[len(list)//2]
             if searchedValue >=m:
-                #TODO: Link zur Rekursionserklärung anfügen
                 return self.runAlgorithm(list[len(list)//2:],searchedValue)
             else:
                 return self.runAlgorithm(list[:len(list)//2],searchedValue)
