@@ -36,6 +36,7 @@ avgIteration=sumOfIterations/1000
 print("Average number of iterations - linear search: ", round(avgIteration,1) )
 
 
+
 #Run binary search iterative
 print("------------------")
 searchAlgorithm = BinarySearchIterative()
@@ -50,13 +51,13 @@ avgIteration=sumOfIterations/1000
 print("Average number of iterations - binary search iterative:", round(avgIteration,1))
 
 
+
 #Run binary search recursively
 print("------------------")
 searchAlgorithm = BinarySearchRecursivly()
-
 programm.setSearchAlgorithm(searchAlgorithm)
-
 sumOfIterations=0
+
 for i in range(1000):
     programm.resetConter()
     iteration=programm.runSearch()
