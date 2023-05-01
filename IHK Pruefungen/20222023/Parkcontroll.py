@@ -40,10 +40,6 @@ d4 = Datum("2023-05-23 12:00")
 d5 = Datum("2023-05-23 12:01")
 d6 = Datum("2023-05-23 12:02")
 
-#print(d6.getDay())
-#print(d6.getHour())
-#print(d6.getDaysOfMonth())
-
 a = ComLeave(d1, 0, 1)
 b = ComLeave(d2, 0, 2)
 c = ComLeave(d3, 0, 30)
@@ -82,19 +78,18 @@ def countLeaves(entry:ComLeave):
         index_column = (int)(hour) - 9
 
         if entry[i].getComeInOut() == 0:
-            #FEHLER: muss bis 10 sein, weil 9 exklusiver Parameter sonst
-            for j in range(index_column, 9): #läuft immer vom Eintrittsuhrtzeit nach vorne
+            #FEHLER: muss bis 10 sein, weil 9 exklusiver Parameter 
+            for j in range(index_column, 10): #läuft immer vom Eintrittsuhrtzeit nach vorne
                 #[index_row] = Day, [j]=Hour
                 visitors[index_row][j] = visitors[index_row][j] + entry[i].getNoPeople()
                 print("Aktuell im Park: " + str(visitors[index_row][j]) + " - Plus(inklusiv bereits): " +   str(entry[i].getNoPeople()))
 
         else:
-            #FEHLER: muss bis 10 sein, weil 9 exklusiver Parameter sonst
-            for j in range((index_column + 1),9):
-                #Frage: Müssten dies hier nicht - entry[i].getNoPeople() sein
+            for j in range((index_column + 1),10):
+                #FEHLER: Müssten dies hier nicht - entry[i].getNoPeople() sein
                 visitors[index_row][j] = visitors[index_row][j] -  entry[i].getNoPeople()
                 print("Im nächsten Zeitabschnitt im Park: " + str(visitors[index_row][j]) + " - Minus(inklusiv bereits): " +   str(entry[i].getNoPeople()))
-                #visitors[index_row][j] = visitors[index_row][j] - 1  
+                #VORHERIGE LÖSUNG: visitors[index_row][j] = visitors[index_row][j] - 1  
     return visitors
 
 result = countLeaves(comLeaves)
