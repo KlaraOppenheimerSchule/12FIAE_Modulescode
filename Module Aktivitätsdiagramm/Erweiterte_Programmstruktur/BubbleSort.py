@@ -9,5 +9,5 @@ class BubbleSort(SortAlgorithm):
                 if array[i] > array[i+1]:
                     array[i+1], array[i] = array[i],array[i+1]
             arrayLastIndex -=1
-            i += 1
+          
    
