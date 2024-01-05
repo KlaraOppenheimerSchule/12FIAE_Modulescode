@@ -10,16 +10,19 @@ henning = lehrling(eder)
 
 
 # No. 1
-# enter your code here
+if(henning.getFleissig() == True):
+    henning.frageNachPause()
 
+henning.fegen()
 
 
 # No. 2
-# enter your code here
-
+henning.baueStuehle(3)
+    
 
 # No.3 
-# enter your code here
+for i in range (3):
+    eder.pruefeArbeit(i)
 
 
 
