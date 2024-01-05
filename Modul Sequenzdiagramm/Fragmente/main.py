@@ -9,24 +9,18 @@ eder = meister()
 henning = lehrling(eder)
 
 
-# Optional Fragment - IF
-# Henning fragt den Meister, ob sie Eis essen wollen
-
-if(henning.getFleissig() == True):
-    henning.frageNachPause()
-
-henning.fegen()
+# No. 1
+# enter your code here
 
 
 
-# Loop und if/else
-# # Henning bekommt den Auftrag vom Meister, dass er 3 Stühle baut
-henning.baueStuehle(3)
+# No. 2
+# enter your code here
 
-for i in range (3):
-    eder.pruefeArbeit(i)
-    
-    
+
+# No.3 
+# enter your code here
+
 
 
  
