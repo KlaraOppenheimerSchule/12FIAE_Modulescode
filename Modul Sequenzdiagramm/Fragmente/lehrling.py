@@ -16,7 +16,7 @@ class lehrling:
     
     
     def frageNachPause(self):
-        self.__meister.anwtortAufPause()
+        return self.__meister.anwtortAufPauseGeben()
    
     def fegen(self):
         print("Feg, feg, feg ... ")
@@ -24,7 +24,7 @@ class lehrling:
     def baueStuhl(self):
         status = bool(random.getrandbits(1))
         konkreterStuhl = stuhl(status)
-        self.__meister.setStuhl(konkreterStuhl)
+        self.__meister.addStuhl(konkreterStuhl)
     
     def baueStuehle(self, count):
         for i in range(count): 

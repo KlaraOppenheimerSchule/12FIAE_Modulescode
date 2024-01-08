@@ -11,7 +11,7 @@ henning = lehrling(eder)
 
 # No. 1
 if(henning.getFleissig() == True):
-    henning.frageNachPause()
+    print(henning.frageNachPause())
 
 henning.fegen()
 

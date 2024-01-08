@@ -11,14 +11,15 @@ class meister:
     def getLaune(self):
         return self.__laune
   
-    def setStuhl(self, gebauterStuhl : stuhl):
+    def addStuhl(self, gebauterStuhl : stuhl):
         self.__stuehle.append(gebauterStuhl)
     
     def getStuhlQualitaet(self, index):
         return self.__stuehle[index].getQualitaet()
     
-    def anwtortAufPause(self):
-        print("Wir gehen Eis essen!")
+    def anwtortAufPauseGeben(self):
+        antwort = "Wir gehen Eis essen!"
+        return antwort
      
             
     def pruefeArbeit(self, index):
