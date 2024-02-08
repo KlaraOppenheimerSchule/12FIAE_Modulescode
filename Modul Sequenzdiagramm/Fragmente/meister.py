@@ -22,11 +22,14 @@ class meister:
         return antwort
      
             
-    def pruefeArbeit(self, index):
+    def pruefeArbeit(self):
         
-        qualitaet = self.__stuehle[index].getQualitaet()
+        length = len(self.__stuehle)
+       
+        for i in range (length):
+            qualitaet = self.__stuehle[i].getQualitaet()
         
-        if (qualitaet == True):
-            print("Gute Arbeit")
-        else:
-            print("Mach es noch mal!")
+            if (qualitaet == True):
+                print("Gute Arbeit")
+            else:
+                print("Mach es noch mal!")
