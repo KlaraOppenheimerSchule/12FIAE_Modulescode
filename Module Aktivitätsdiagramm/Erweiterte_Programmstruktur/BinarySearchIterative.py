@@ -23,7 +23,7 @@ class BinarySearchIterative(SearchAlgorithm):
  
             # means x is present at mid
             else:
-                return mid
+                return iterations
  
         # If we reach here, then the element was not present
         #print("SearchValue not found")
