@@ -1,0 +1,27 @@
+@startuml
+|Verkauf|
+start
+:Auftrag erfassen;
+|Buchhaltung|
+|Versand|
+:Prüfen, ob Ware verfügbar ist;
+if () then ([no])
+    |Verkauf|
+    :Auftag wg Unmöglichkeit ablehnen;
+else ([yes])
+    :Ware reservieren
+    |Buchhaltung|
+    :Rechnung erstellen
+    :Zahlungseingang prüfen
+    if() then ([yes])
+        stop;
+    else ([no])
+        stop;
+    endif
+
+endif
+
+
+:xx;
+stop
+@enduml
