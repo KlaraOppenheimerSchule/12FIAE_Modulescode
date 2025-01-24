@@ -13,7 +13,7 @@ function findDuplicates(){
 }
 
 findDuplicates()
-
+console.log("XXXXXXXXXXXXXXXXXXXXXXXXX")
 
 function findDuplicatesRight(){
     const numbers = [2,4,5,2,5,8,5,10];

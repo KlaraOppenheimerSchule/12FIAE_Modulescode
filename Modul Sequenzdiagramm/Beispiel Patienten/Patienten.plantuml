@@ -1,0 +1,45 @@
+@startuml
+left header Patientendaten
+actor Benutzer
+participant ":TableView" as TableView
+participant ":Controller" as Controller
+participant ":Model" as Model
+ 
+Benutzer ->> TableView : Interagiert
+activate Benutzer
+activate TableView
+deactivate Benutzer
+ 
+TableView ->> Controller : Aktion auslösen
+deactivate TableView
+activate Controller
+ 
+Controller -> Model : setData(int, String)
+activate Model
+ 
+Model -> Model : notifyObservers()
+activate Model
+ 
+Model -> TableView : update()
+activate TableView
+ 
+TableView -> Model : getData()
+activate Model
+Model -->> TableView : String[]
+deactivate Model
+ 
+TableView -> TableView : display()
+activate TableView
+TableView -->> TableView
+deactivate TableView
+ 
+TableView -->> Model
+deactivate TableView
+ 
+Model -->> Model
+deactivate Model
+ 
+Model -->> Controller
+deactivate Model
+deactivate Controller
+@enduml
