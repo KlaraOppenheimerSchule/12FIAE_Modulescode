@@ -10,8 +10,7 @@ henning = lehrling(eder)
 
 
 # No. 1
-fleissig = henning.getFleissig()
-if(fleissig == True):
+if(henning.getFleissig() == True):
     print(henning.frageNachPause())
 
 henning.fegen()
@@ -22,7 +21,8 @@ henning.baueStuehle(3)
     
 
 # No.3 
-eder.pruefeArbeit()
+for i in range (3):
+    eder.pruefeArbeit(i)
 
 
 
