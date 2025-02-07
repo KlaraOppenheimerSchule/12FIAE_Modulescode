@@ -12,11 +12,6 @@ if __name__ == "__main__":
     
 
     
-    # Füge Beobachter hinzu
-    filmtest.addChangeListener(neu)
-    filmtest.addChangeListener(beliebt)
-    
-    
     # Aktualisiere Filmdaten und benachrichtige Beobachter
     filmtest.set_data("Terminator","12 Geschworenen","Star Wars")
     filmtest.set_data("Oppenheimer","The Creator","Dolly Darko")

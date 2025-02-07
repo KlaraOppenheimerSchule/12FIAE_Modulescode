@@ -6,6 +6,7 @@ class AnzeigeBeliebt(ChangeListener):
         self.__Filmdaten = Filmdaten
         self.__beliebt = []
         self.__tipp = []
+        Filmdaten.addChangeListener(self)
         
     def display(self):
         print ("Beliebte Filme:",self.__beliebt,"\n Filmtipp:",self.__tipp)

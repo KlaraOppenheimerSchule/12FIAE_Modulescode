@@ -6,6 +6,7 @@ class AnzeigeNeu(ChangeListener):
         self.__Filmdaten = Filmdaten
         self.__neu = []
         self.__tipp = []
+        Filmdaten.addChangeListener(self)
         
     def display(self):
         print ("Neue Filme:",self.__neu,"\n Filmtipp:",self.__tipp)
