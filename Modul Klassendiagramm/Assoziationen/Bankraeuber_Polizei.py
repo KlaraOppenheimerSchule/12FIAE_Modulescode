@@ -19,8 +19,6 @@ class Bankraeuber:
        
 
 
-
-
 # Beispielhafte Nutzung
 p = Polizei("Kommissarin Klarblick")
 r = Bankraeuber("Räuber Ratz")
