@@ -21,7 +21,11 @@ class Lehrer:
     def anrufen(self):
         print(f"{self.__name} wird angerufen.")
 
-# Beispielhafte Nutzung
+''' Beispiel der Nutzung:
+Aufgrund der unspezifischen Navigierbarkeit rufen weder Klasse Lehrer noch Klasse Eltern 
+Methoden der anderen Klasse auf. Bei der unspezifischen Navigierbarkeit ist dies jedoch 
+noch verboten, aber auch nicht explizit gefordert. Es ist halt nicht spzeifiziert (unspezifisch)
+'''
 lehrer1 = Lehrer("Herr Weber")
 eltern1 = Eltern("Frau Schulz")
 
