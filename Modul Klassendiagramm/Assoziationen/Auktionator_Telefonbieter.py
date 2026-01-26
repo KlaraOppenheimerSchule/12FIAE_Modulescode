@@ -19,7 +19,12 @@ class Telefonbieter:
         auktionator.setzeMaxGebot(self.__name, betrag)
 
 
-# Beispielhafte Nutzung
+''' Beispielhafte Nutzung
+Hierbei ist die Kommunikation wie eine Einbahnstraße zu sehen. Der Auktionator schafft die 
+Rahmen für die Versteigunger (Attribut gebote als Liste). Die Bieter haben stets Zugriff und
+können bieten. Jedoch hat der Auktionator beim Verfahren keine Kenntnisse über die Bieter, da 
+ihm laut Klassendiagramm eine Kommunikation in diese Richtung verboten wurde.
+'''
 bieter1 = Telefonbieter("Bieter1")
 bieter2 = Telefonbieter("Bieter2")
 bieter3 = Telefonbieter("Bieter3")

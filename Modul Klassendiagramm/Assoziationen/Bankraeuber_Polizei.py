@@ -19,7 +19,12 @@ class Bankraeuber:
        
 
 
-# Beispielhafte Nutzung
+''' Beispielhafte Nutzung
+Hierbei ist die Kommunikation zumindest von einer Seite spezifiziert. Der Bankräuber kann sich den
+Namen des Polizisten geben lassen. Dies bedeutet nicht, dass nicht (zukünftig) der Polizist den
+Bankräuber kennt und sich den Namen geben lassen kann. Zumindest ist es aber jetzt nicht spezifiziert.
+Ein Verbot besteht nicht.
+'''
 p = Polizei("Kommissarin Klarblick")
 r = Bankraeuber("Räuber Ratz")
 

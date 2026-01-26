@@ -10,6 +10,7 @@ class Ehefrau():
     def getKosename(self):
         return self.__kosename
     
+    # hier die spezifische Navigierbarkeit
     def callEhemann(self, ehemann):
         return ehemann.getKosename()
     
@@ -25,10 +26,17 @@ class Ehemann():
     def getKosename(self):
         return self.__kosename
     
+    # hier die spezifische Navigierbarkeit
     def callEhefrau(self, ehefrau): 
         return ehefrau.getKosename()
 
-# Beispielhafte Nutzung
+''' Beispielhafte Nutzung
+Hierbei ist die Navigierbarkeit spezifiziert (sie ist umgesetzt).
+Un zwar in beide Richtungen (bidirektional).
+Um den Ehemann bzw. die Ehefrau anzrufen, ist im Code bei der
+Methode callEhefrau / callEhemann die Übergabe der Klasse ehefrau bzw. 
+ehemann erforderlich.
+'''
 ehemann1 = Ehemann("Andreas","09.05.1992","Schatz")
 ehefrau1 = Ehefrau("Mona","09.04.1991","Hase")
 
