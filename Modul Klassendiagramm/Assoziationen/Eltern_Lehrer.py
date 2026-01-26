@@ -29,4 +29,3 @@ noch verboten, aber auch nicht explizit gefordert. Es ist halt nicht spzeifizier
 lehrer1 = Lehrer("Herr Weber")
 eltern1 = Eltern("Frau Schulz")
 
-
