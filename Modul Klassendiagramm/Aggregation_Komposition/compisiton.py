@@ -16,15 +16,15 @@ class spieler():
 class strasse():
      
     #constructor
-    def __init__(self, strassenname, miete, spieler):
-        if not spieler:
+    def __init__(self, strassenname, miete, spielername, konto):
+        if not spielername or not konto:
             raise ValueError("Objekterstellung nicht erlaubt.")
             print("Objekt wird nicht erzeugt!")
 
         else:
             self.__strassenname = strassenname
             self.__miete = miete
-            self.__besitzer = spieler
+            self.__besitzer = spieler(spielername,konto)
             print("Objekt wird erzeugt!")
     
     #getBesitzer
@@ -34,10 +34,12 @@ class strasse():
 
 
 try:
-    st1 = strasse('Badstrasse',1000.00, spieler('Max', 100.00))
-    st2 = strasse('Badstrasse',1000.00, None)
+    st1 = strasse('Badstrasse',1000.00, "Stefan",100)
+    st2 = strasse('Badstrasse',1000.00, None, None)
 except ValueError as e:
     print(e)
+    
+print(st1.getBesitzer())
 
 
 

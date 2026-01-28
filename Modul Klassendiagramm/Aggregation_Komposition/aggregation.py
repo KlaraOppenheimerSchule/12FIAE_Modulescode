@@ -39,17 +39,19 @@ class strasse():
         self.__besitzer = NONE
 
 # Test   
-sp1 = spieler('Max', 100.00)
+sp1 = spieler('Stefan', 100.00)
 st1 = strasse('Badstrasse',1000.00)
 
 # Besitzer hinzufügen
-st1.addBesitzer(sp1)
+##st1.addBesitzer(sp1)
 
 # Besitzer ausgeben lassen
-print(st1.getBesitzer())
+#print(st1.getBesitzer())
 
 # Besitzer entfernen
-st1.removeBesitzer()
+#st1.removeBesitzer()
 
 # Besitzer ausgeben lassen
-print(st1.getBesitzer())
+#print(st1.getBesitzer())
+
+print(sp1.getName())

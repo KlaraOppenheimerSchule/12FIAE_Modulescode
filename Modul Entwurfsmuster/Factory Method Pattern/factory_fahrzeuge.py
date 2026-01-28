@@ -15,7 +15,7 @@ class Motorrad(Fahrzeug):
 
 
 class FahrzeugFabrik(metaclass=abc.ABCMeta):
-    @abc.abstractclassmethod
+    @abc.abstractmethod
     def baue_Fahrzeug():
         pass
         
