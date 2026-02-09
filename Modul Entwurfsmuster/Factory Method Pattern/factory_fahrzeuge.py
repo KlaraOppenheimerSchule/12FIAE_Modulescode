@@ -24,13 +24,13 @@ class AutoFabrik(FahrzeugFabrik):
     def baue_Fahrzeug():
         return Auto
              
-class MotoradFabrik(FahrzeugFabrik):
+class MotorradFabrik(FahrzeugFabrik):
     def baue_Fahrzeug():
         return Motorrad      
 
 # Baue jetzt ein Auto
 skoda = AutoFabrik.baue_Fahrzeug()
-honda = MotoradFabrik.baue_Fahrzeug()
+honda = MotorradFabrik.baue_Fahrzeug()
 
 skoda.fahre()
 honda.fahre()
