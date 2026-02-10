@@ -1,57 +1,81 @@
 from pickle import FALSE, NONE
 
-class spieler():
-       
-    
-#constructor
-    def __init__(self, spielername, konto):
-        self.__spielername = spielername
-        self.__konto = konto
-        
-#getName
-    def getName(self):
-        return self.__spielername
-  
 # Class Strasse
-class strasse():
+class Strasse():
      
     #constructor
     def __init__(self, strassenname, miete):
         self.__strassenname = strassenname
         self.__miete = miete
-        self.__besitzer = [spieler] = NONE
     
-    #getBesitzer
-    def getBesitzer(self):
-        if self.__besitzer is NONE:
-            return 'Die Strasse hat keinen Besitzer'
-        else:
-            return self.__besitzer.getName()
+    #get strassenname
+
+    def getStrassenname(self):
+        return self.__strassenname
     
-    
-    #addBesitzer
-    def addBesitzer(self, besitzer):
-        self.__besitzer = besitzer
+    # get miete
+
+    def getMiete(self):
+        return self.__miete
+
+
+# Class Spieler
+class Spieler():
+       
+
+    #constructor
+    def __init__(self, spielername : str, konto : float):
+        self.__spielername = spielername
+        self.__konto = konto
+        self.__strasse = []
         
-      
-    #Remove Besitzer      
-    def removeBesitzer(self):
-        self.__besitzer = NONE
+    #getName
+    def getName(self):
+        return self.__spielername
+    
+    #getKonto
+    def getKonto(self):
+        return self.__konto
+    
+    #get streetname by ID
+    def getStrassennameByID(self, id : int):
+        if 0 <= id < len(self.__strasse):
+            return self.__strasse[id].getStrassenname()
+        else:
+            return None
+
+    
+    #increase the account balance
+    def erhoeheKontostand(self, betrag : float):
+        self.__konto += betrag
+
+    # decrease the account balance
+
+    def senkeKontostand(self, betrag : float):
+        self.__konto -= betrag
+
+    
+    # add street to list
+    def addStrasse(self, strasse : Strasse):
+        self.__strasse.append(strasse)
+
+    # remove street frome list
+    def enterferneStrasse(self, index : int):
+        self.__strasse.pop(index)
+    
+
 
 # Test   
-sp1 = spieler('Stefan', 100.00)
-st1 = strasse('Badstrasse',1000.00)
+street1 = Strasse("Schlossalle",8000.00)
+player1 = Spieler("Stefan",100.00)
 
-# Besitzer hinzufügen
-##st1.addBesitzer(sp1)
+player1.addStrasse(street1)
 
-# Besitzer ausgeben lassen
-#print(st1.getBesitzer())
+print(player1.getStrassennameByID(0))
 
-# Besitzer entfernen
-#st1.removeBesitzer()
 
-# Besitzer ausgeben lassen
-#print(st1.getBesitzer())
+player1.enterferneStrasse(0)
 
-print(sp1.getName())
+print(player1.getStrassennameByID(0))
+
+

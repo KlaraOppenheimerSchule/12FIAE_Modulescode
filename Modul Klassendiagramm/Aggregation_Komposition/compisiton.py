@@ -1,46 +1,80 @@
 from pickle import FALSE, NONE
 
-class spieler():
-       
-    
-#constructor
-    def __init__(self, spielername, konto):
-        self.__spielername = spielername
-        self.__konto = konto
-        
-#getName
-    def getName(self):
-        return self.__spielername
-  
 # Class Strasse
-class strasse():
+class Strasse():
      
     #constructor
-    def __init__(self, strassenname, miete, spielername, konto):
-        if not spielername or not konto:
-            raise ValueError("Objekterstellung nicht erlaubt.")
-            print("Objekt wird nicht erzeugt!")
+    def __init__(self, strassenname, miete):
+        self.__strassenname = strassenname
+        self.__miete = miete
+    
+    #get strassenname
 
+    def getStrassenname(self):
+        return self.__strassenname
+    
+    # get miete
+
+    def getMiete(self):
+        return self.__miete
+
+
+# Class Spieler
+class Spieler():
+       
+
+    #constructor
+    def __init__(self, spielername : str, konto : float):
+        self.__spielername = spielername
+        self.__konto = konto
+        self.__strasse = []
+        
+    #getName
+    def getName(self):
+        return self.__spielername
+    
+    #getKonto
+    def getKonto(self):
+        return self.__konto
+    
+    #get streetname by ID
+    def getStrassennameByID(self, id : int):
+        if 0 <= id < len(self.__strasse):
+            return self.__strasse[id].getStrassenname()
         else:
-            self.__strassenname = strassenname
-            self.__miete = miete
-            self.__besitzer = spieler(spielername,konto)
-            print("Objekt wird erzeugt!")
+            return None
+
     
-    #getBesitzer
-    def getBesitzer(self):
-        return self.__besitzer.getName()
+    #increase the account balance
+    def erhoeheKontostand(self, betrag : float):
+        self.__konto += betrag
+
+    # decrease the account balance
+
+    def senkeKontostand(self, betrag : float):
+        self.__konto -= betrag
+
+    
+    # add street to list
+    def addStrasse(self, strassenname : str, miete : float):
+        self.__strasse.append(Strasse(strassenname,miete))
+
+    # remove street frome list
+    def enterferneStrasse(self, index : int):
+        self.__strasse.pop(index)
     
 
 
-try:
-    st1 = strasse('Badstrasse',1000.00, "Stefan",100)
-    st2 = strasse('Badstrasse',1000.00, None, None)
-except ValueError as e:
-    print(e)
-    
-print(st1.getBesitzer())
+# Test   
+player1 = Spieler("Stefan",100.00)
+
+player1.addStrasse("Schlossalle",8000.00)
+
+print(player1.getStrassennameByID(0))
 
 
+player1.enterferneStrasse(0)
+
+print(player1.getStrassennameByID(0))
 
 
