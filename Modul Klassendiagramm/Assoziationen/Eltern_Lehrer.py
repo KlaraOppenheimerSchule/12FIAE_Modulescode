@@ -23,7 +23,7 @@ class Lehrer:
 
 ''' Beispiel der Nutzung:
 Aufgrund der unspezifischen Navigierbarkeit rufen weder Klasse Lehrer noch Klasse Eltern 
-Methoden der anderen Klasse auf. Bei der unspezifischen Navigierbarkeit ist dies jedoch 
+Methoden der anderen Klasse auf oder halten Objektreferenzen. Bei der unspezifischen Navigierbarkeit ist dies jedoch 
 noch verboten, aber auch nicht explizit gefordert. Es ist halt nicht spzeifiziert (unspezifisch)
 '''
 lehrer1 = Lehrer("Herr Weber")

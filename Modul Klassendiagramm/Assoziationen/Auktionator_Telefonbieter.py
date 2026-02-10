@@ -12,11 +12,12 @@ class Auktionator:
 
 
 class Telefonbieter:
-    def __init__(self, name):
+    def __init__(self, name, auktionator):
         self.__name = name
+        self.__auktionator = auktionator
 
-    def biete(self, auktionator, betrag):
-        auktionator.setzeMaxGebot(self.__name, betrag)
+    def biete(self, betrag):
+        self.__auktionator.setzeMaxGebot(self.__name, betrag)
 
 
 ''' Beispielhafte Nutzung
@@ -25,14 +26,16 @@ Rahmen für die Versteigunger (Attribut gebote als Liste). Die Bieter haben stet
 können bieten. Jedoch hat der Auktionator beim Verfahren keine Kenntnisse über die Bieter, da 
 ihm laut Klassendiagramm eine Kommunikation in diese Richtung verboten wurde.
 '''
-bieter1 = Telefonbieter("Bieter1")
-bieter2 = Telefonbieter("Bieter2")
-bieter3 = Telefonbieter("Bieter3")
-a = Auktionator()
 
-bieter1.biete(a, 20)
+a = Auktionator()
+bieter1 = Telefonbieter("Bieter1",a)
+bieter2 = Telefonbieter("Bieter2",a)
+bieter3 = Telefonbieter("Bieter3",a)
+
+
+bieter1.biete(20)
 print(a.getGebot())  # ['Bieter1', 20]
-bieter2.biete(a, 40)
+bieter2.biete(40)
 print(a.getGebot())  # ['Bieter2', 40]
-bieter3.biete(a, 35)
+bieter3.biete(35)
 print(a.getGebot())  # ['Bieter2', 40]

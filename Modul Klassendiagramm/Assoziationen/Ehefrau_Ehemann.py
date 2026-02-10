@@ -3,6 +3,7 @@ class Ehefrau():
     def __init__(self, vorname, kosename):
         self.__vorname = vorname
         self.__kosename = kosename
+        self.__ehemann = None
     
     def getVorname(self):
         return self.__vorname
@@ -10,15 +11,22 @@ class Ehefrau():
     def getKosename(self):
         return self.__kosename
     
+    def setEhemann(self, ehemann):
+        self.__ehemann = ehemann
+
     # hier die spezifische Navigierbarkeit
-    def callEhemann(self, ehemann):
-        return ehemann.getKosename()
+    def callEhemann(self):
+        if self.__ehemann == None: 
+            return None
+        else:
+            return self.__ehemann.getKosename()
     
 
 class Ehemann():
     def __init__(self, vorname, kosename):
         self.__vorname = vorname
         self.__kosename = kosename
+        self.__ehefrau = None
     
     def getVorname(self):
         return self.__vorname
@@ -26,19 +34,27 @@ class Ehemann():
     def getKosename(self):
         return self.__kosename
     
+    def setEhefrau(self, ehefrau):
+        self.__ehefrau = ehefrau
+
     # hier die spezifische Navigierbarkeit
-    def callEhefrau(self, ehefrau): 
-        return ehefrau.getKosename()
+    def callEhefrau(self):
+        if self.__ehefrau == None: 
+            return None
+        else:
+            return self.__ehefrau.getKosename()
 
 ''' Beispielhafte Nutzung
 Hierbei ist die Navigierbarkeit spezifiziert (sie ist umgesetzt).
-Un zwar in beide Richtungen (bidirektional).
-Um den Ehemann bzw. die Ehefrau anzrufen, ist im Code bei der
-Methode callEhefrau / callEhemann die Übergabe der Klasse ehefrau bzw. 
-ehemann erforderlich.
+Und zwar in beide Richtungen (bidirektional).
+Ehemann und Ehefrau werden als Objektreferenz aufgebaut und können über callEhemann / callEhefrau 
+aufgerufen werden.
 '''
-ehemann1 = Ehemann("Andreas","09.05.1992","Schatz")
-ehefrau1 = Ehefrau("Mona","09.04.1991","Hase")
+andreas = Ehemann("Andreas","Schatz")
+mona = Ehefrau("Mona","Hase")
 
-print(ehemann1.callEhefrau(ehefrau1))
-print(ehefrau1.callEhemann(ehemann1))
+andreas.setEhefrau(mona)
+mona.setEhemann(andreas)
+
+print(andreas.callEhefrau())
+print(mona.callEhemann())
