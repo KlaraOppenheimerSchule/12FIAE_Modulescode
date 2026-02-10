@@ -60,7 +60,7 @@ class Spieler():
         self.__strasse.append(Strasse(strassenname,miete))
 
     # remove street frome list
-    def enterferneStrasse(self, index : int):
+    def enterferneStrasseByID(self, index : int):
         self.__strasse.pop(index)
     
 
