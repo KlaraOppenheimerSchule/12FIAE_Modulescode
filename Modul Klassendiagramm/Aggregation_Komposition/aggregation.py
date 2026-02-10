@@ -67,11 +67,17 @@ class Spieler():
 
 # Test   
 street1 = Strasse("Schlossalle",8000.00)
+street2 = Strasse("Badstrasse", 1200.00)
+street3 = Strasse("Lessing Straße", 4000.00)
 player1 = Spieler("Stefan",100.00)
 
 player1.addStrasse(street1)
+player1.addStrasse(street2)
+player1.addStrasse(street3)
 
 print(player1.getStrassennameByID(0))
+print(player1.getStrassennameByID(1))
+print(player1.getStrassennameByID(2))
 
 
 player1.enterferneStrasse(0)
