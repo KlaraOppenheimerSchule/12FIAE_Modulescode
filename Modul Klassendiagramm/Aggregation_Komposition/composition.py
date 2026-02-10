@@ -69,11 +69,13 @@ class Spieler():
 player1 = Spieler("Stefan",100.00)
 
 player1.addStrasse("Schlossalle",8000.00)
+player1.addStrasse("Badstrasse", 1600.00)
+player1.addStrasse("Lessings Strasse", 4000.00)
 
 print(player1.getStrassennameByID(0))
 
 
-player1.enterferneStrasse(0)
+player1.enterferneStrasseByID(0)
 
 print(player1.getStrassennameByID(0))
 
