@@ -13,7 +13,7 @@ class Bankraeuber:
     def __init__(self, name):
         self.__name = name
    
-
+    # Schwache Assoziation aufgrund der Objektübergabe bei Methode
     def beobachtePolizei(self, polizei):
         print(f"Ich, {self.__name}, beobachte" f" {polizei.getName()}")
        
