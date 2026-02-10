@@ -1,6 +1,6 @@
 
 class Ehefrau():
-    def __init__(self, vorname, geburtsdatum, kosename):
+    def __init__(self, vorname, kosename):
         self.__vorname = vorname
         self.__kosename = kosename
     
