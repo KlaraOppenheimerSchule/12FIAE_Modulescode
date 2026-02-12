@@ -1,9 +1,9 @@
-from stuhl import stuhl
-from meister import meister
+from stuhl import Stuhl
+from meister import Meister
 import random
 
-class lehrling:
-    def __init__(self, meister):
+class Lehrling:
+    def __init__(self, meister: Meister):
 
         self.__meister = meister
         self.__fleissig = True
@@ -23,7 +23,7 @@ class lehrling:
         
     def baueStuhl(self):
         status = bool(random.getrandbits(1))
-        konkreterStuhl = stuhl(status)
+        konkreterStuhl = Stuhl(status)
         self.__meister.addStuhl(konkreterStuhl)
     
     def baueStuehle(self, count):

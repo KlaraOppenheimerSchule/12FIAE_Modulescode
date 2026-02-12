@@ -1,12 +1,12 @@
 
 ##############################################################################
-from lehrling import lehrling
-from meister import meister
+from lehrling import Lehrling
+from meister import Meister
 ###########################################################################
 
 # create object and build object reference
-eder = meister()
-henning = lehrling(eder)
+eder = Meister()
+henning = Lehrling(eder)
 
 
 # No. 1

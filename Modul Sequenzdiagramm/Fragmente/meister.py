@@ -1,6 +1,6 @@
-from stuhl import stuhl
+from stuhl import Stuhl
 
-class meister:
+class Meister:
     def __init__(self):
         self.__laune = True
         self.__stuehle = []
@@ -11,7 +11,7 @@ class meister:
     def getLaune(self):
         return self.__laune
   
-    def addStuhl(self, gebauterStuhl : stuhl):
+    def addStuhl(self, gebauterStuhl : Stuhl):
         self.__stuehle.append(gebauterStuhl)
     
     def getStuhlQualitaet(self, index):

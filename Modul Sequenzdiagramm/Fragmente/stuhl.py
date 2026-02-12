@@ -1,4 +1,4 @@
-class stuhl:
+class Stuhl:
     def __init__(self, qualitaet):
         self.__qualitaet = qualitaet
         
