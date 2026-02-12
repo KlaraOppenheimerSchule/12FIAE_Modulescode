@@ -16,7 +16,8 @@ class Lehrling:
     
     
     def frageNachPause(self):
-        return self.__meister.anwtortAufPauseGeben()
+        antwortmeister = self.__meister.anwtortAufPauseGeben()
+        return antwortmeister
    
     def fegen(self):
         print("Feg, feg, feg ... ")
