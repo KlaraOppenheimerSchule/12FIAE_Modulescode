@@ -9,7 +9,9 @@ class AnzeigeBeliebt(ChangeListener):
         Filmdaten.addChangeListener(self)
         
     def display(self):
-        print ("Beliebte Filme:",self.__beliebt,"\n Filmtipp:",self.__tipp)
+        x=4
+        while x>0:
+            print ("Beliebte Filme:",self.__beliebt,"\n Filmtipp:",self.__tipp)
         
 
     def update(self):
