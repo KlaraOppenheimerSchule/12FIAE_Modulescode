@@ -72,7 +72,7 @@ let buecher = [
     }
 ];
 
-// Aufgabe 2.1 searchTitel
+// Aufgabe 2.1 
 function findBookByTitel(titel){
  for(let buch of buecher){
   if(buch.titel===titel) return buch;
@@ -82,7 +82,7 @@ function findBookByTitel(titel){
 
 console.log(findBookByTitel("Programmieren mit C#"))
 
-// Aufgabe 2.2 Bücher eines Autos anzeigen
+// Aufgabe 2.2 
 function getMostPopularAuthor() {
 
     let statistik = {};
@@ -116,7 +116,10 @@ function getMostPopularAuthor() {
 }
 
 console.log(getMostPopularAuthor())
-// 2.3 Ausleihquote berechnen
+
+
+// Aufgabe 2.3 
+
 
 function getBorrowRateByAuthor() {
 
