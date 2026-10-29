@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schulbibliothek – Musterlösung Stufe 3</title>
+<style>
+body{font:16px/1.5 system-ui,sans-serif;max-width:780px;margin:2rem auto;padding:0 1rem;color:#1c2533}
+h1{color:#005da8;border-bottom:3px solid #f39400;padding-bottom:8px}
+form{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1rem}
+input,select,button{font:inherit;padding:6px 10px}
+button{background:#005da8;color:#fff;border:0;border-radius:4px;cursor:pointer}
+table{border-collapse:collapse;width:100%}
+th,td{border-bottom:1px solid #ccc;padding:6px;text-align:left}
+th{color:#005da8}.aus{color:#b25e00}
+</style>
+</head>
+<body>
+<h1>Schulbibliothek</h1>
+<form id="f">
+  <select id="typ"><option value="Book">Buch</option><option value="Magazine">Magazin</option><option value="BluRay">Blu-ray</option></select>
+  <input id="titel" placeholder="Titel" required>
+  <input id="autor" placeholder="Autor (nur Buch)">
+  <input id="zahl" type="number" placeholder="Seiten / Ausgabe / Minuten" required>
+  <button>Hinzufügen</button>
+</form>
+<p id="stat"></p>
+<table><thead><tr><th>Art</th><th>Beschreibung</th><th>Status</th><th></th></tr></thead><tbody id="liste"></tbody></table>
+<script>
+// ---- Aufgabe 3.2: Vererbungshierarchie (Basisklasse Medium)
+class Medium {
+  constructor(id, titel) { this.id = id; this.titel = titel; this.ausgeliehen = false; }
+  describe() { return this.titel; }
+}
+class Book extends Medium {
+  constructor(id, titel, autor, seiten) { super(id, titel); this.autor = autor; this.seiten = seiten; }
+  describe() { return `Buch: ${this.titel} von ${this.autor}, ${this.seiten} Seiten`; }
+}
+class Magazine extends Medium {
+  constructor(id, titel, ausgabe) { super(id, titel); this.ausgabe = ausgabe; }
+  describe() { return `Magazin: ${this.titel}, Ausgabe ${this.ausgabe}`; }
+}
+class BluRay extends Medium {
+  constructor(id, titel, laufzeit) { super(id, titel); this.laufzeit = laufzeit; }
+  describe() { return `Blu-ray: ${this.titel}, ${this.laufzeit} Minuten`; }
+}
+
+// ---- Aufgabe 3.1: User, Loan und Library (Stufe 1 und 2 als Methoden)
+class User {
+  constructor(id, name) { this.id = id; this.name = name; this.loans = []; }
+}
+class Loan {
+  constructor(book, user) {
+    this.book = book; this.user = user; this.date = new Date();
+    book.ausgeliehen = true;          // Beziehung: Loan verbindet Medium und Nutzer
+    user.loans.push(this);
+  }
+  giveBack() {
+    this.book.ausgeliehen = false;
+    this.user.loans = this.user.loans.filter(l => l !== this);
+  }
+}
+class Library {
+  constructor() { this.books = []; }
+  addBook(book) { this.books.push(book); }
+  nextId() { return Math.max(0, ...this.books.map(b => b.id)) + 1; }
+  onlyBooks() { return this.books.filter(m => m instanceof Book); }
+  findBookById(id) { return this.books.find(b => b.id === id) ?? null; }
+  searchBookByTitel(titel) { return this.books.find(b => b.titel === titel) ?? null; }
+  averagePages() {
+    const b = this.onlyBooks();
+    return b.reduce((s, x) => s + x.seiten, 0) / b.length;
+  }
+  getMostPopularAuthor() {
+    const zaehler = {};
+    for (const b of this.onlyBooks()) zaehler[b.autor] = (zaehler[b.autor] ?? 0) + 1;
+    let autor = '', anzahl = 0;
+    for (const a in zaehler) if (zaehler[a] > anzahl) { autor = a; anzahl = zaehler[a]; }
+    return { autor, anzahl };
+  }
+  getBorrowRateByAuthor() {
+    const stat = {};
+    for (const b of this.onlyBooks()) {
+      stat[b.autor] ??= { gesamt: 0, ausgeliehen: 0 };
+      stat[b.autor].gesamt++;
+      if (b.ausgeliehen) stat[b.autor].ausgeliehen++;
+    }
+    return Object.entries(stat).map(([autor, v]) => ({ autor, ...v, quote: v.ausgeliehen / v.gesamt * 100 }));
+  }
+}
+
+// ---- Aufgabe 3.3: Speichern und Laden als JSON
+const KLASSEN = { Book, Magazine, BluRay };
+function saveLibrary(library) {
+  // Der Klassenname wird mitgespeichert, damit man beim Laden die richtige Klasse erzeugen kann.
+  const json = JSON.stringify(library.books.map(m => ({ ...m, typ: m.constructor.name })));
+  try { localStorage.setItem('bibliothek', json); } catch (e) {}
+  return json;
+}
+function loadLibrary(json) {
+  const library = new Library();
+  for (const d of JSON.parse(json || '[]')) {
+    // Aus dem einfachen Objekt wird wieder eine Instanz der richtigen Klasse (mit Methoden).
+    library.addBook(Object.assign(Object.create(KLASSEN[d.typ].prototype), d));
+  }
+  return library;
+}
+
+// ---- Aufgabe 3.4: Oberfläche
+const lib = loadLibrary(localStorage.getItem('bibliothek'));
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function render() {
+  $('liste').innerHTML = lib.books.map(m => `<tr><td>${m.constructor.name}</td><td>${esc(m.describe())}</td>
+    <td class="${m.ausgeliehen ? 'aus' : ''}">${m.ausgeliehen ? 'ausgeliehen' + (m.von ? ' an ' + esc(m.von) : '') : 'verfügbar'}</td>
+    <td><button data-id="${m.id}">${m.ausgeliehen ? 'Zurückgeben' : 'Ausleihen'}</button></td></tr>`).join('');
+  const n = lib.onlyBooks().length;
+  $('stat').textContent = n ? `Bücher: ${n}, Ø Seiten: ${lib.averagePages().toFixed(1)}, beliebtester Autor: ${lib.getMostPopularAuthor().autor}` : 'Noch keine Bücher.';
+}
+function speichern() { saveLibrary(lib); render(); }
+$('f').onsubmit = e => {
+  e.preventDefault();
+  const id = lib.nextId(), t = $('titel').value, z = Number($('zahl').value), typ = $('typ').value;
+  lib.addBook(typ === 'Book' ? new Book(id, t, $('autor').value, z) : typ === 'Magazine' ? new Magazine(id, t, z) : new BluRay(id, t, z));
+  e.target.reset(); speichern();
+};
+$('liste').onclick = e => {
+  const id = Number(e.target.dataset.id);
+  if (!id) return;
+  const m = lib.findBookById(id);
+  if (m.ausgeliehen) { m.ausgeliehen = false; m.von = null; }
+  else {
+    const name = prompt('Name der ausleihenden Person?');
+    if (!name) return;
+    new Loan(m, new User(1, name)); m.von = name;
+  }
+  speichern();
+};
+render();
+</script>
+</body>
+</html>
